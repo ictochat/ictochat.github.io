@@ -69,11 +69,15 @@ rtdb.onValue(chatRef, ss=>{
     let author = obj[msgID]["author"];
     let pfp = obj[msgID]["avatar"]
     let msg = obj[msgID]["message"];
-    let newMsg = document.createElement("div");
-    newMsg.setAttribute("class","message");
-    newMsg.setAttribute("id",msgID);
-    document.getElementById("chatBox").appendChild(newMsg);
-    document.getElementById(msgID).innerHTML = ('<div class="pfp"><img src='+pfp+' alt='+author+' style="width:32px;height:32px;"></div><div class="msgText"><p class="author">'+author+'</p><p class="message">'+msg+'</p></div>');  
+    try {
+      document.getElementById(msgID).innerHTML = ('<div class="pfp"><img src='+pfp+' alt='+author+' style="width:32px;height:32px;"></div><div class="msgText"><p class="author">'+author+'</p><p class="message">'+msg+'</p></div>');  
+    } catch {
+      let newMsg = document.createElement("div");
+      newMsg.setAttribute("class","message");
+      newMsg.setAttribute("id",msgID);
+      document.getElementById("chatBox").appendChild(newMsg);
+      document.getElementById(msgID).innerHTML = ('<div class="pfp"><img src='+pfp+' alt='+author+' style="width:32px;height:32px;"></div><div class="msgText"><p class="author">'+author+'</p><p class="message">'+msg+'</p></div>');
+    }
   }
   scrollToBottom(document.getElementById('chatBox'));
 });
