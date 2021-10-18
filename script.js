@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase
 import * as rtdb from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
 import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
 
-const firebaseConfig = { //you see absolutely nothing here
+const firebaseConfig = {
   apiKey: "AIzaSyBa2L9IA6mT7PvpTXv4vy4XCFKKMleYQI4",
   authDomain: "ictochat-28b45.firebaseapp.com",
   databaseURL: "https://ictochat-28b45-default-rtdb.firebaseio.com",
@@ -13,7 +13,6 @@ const firebaseConfig = { //you see absolutely nothing here
   appId: "1:913846922731:web:55fa87198c9f05425e3dae",
   measurementId: "G-E9BL4YCX4S"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
@@ -80,7 +79,7 @@ rtdb.onValue(chatRef, ss=>{
 });
 
 const chatHandler = function(){
-  if (auth["currentUser"] != null) { //this used to scan if "username" and "avatar" had values but i changed that
+  if (auth["currentUser"]) { //this used to scan if "username" and "avatar" had values but i changed that
     let chat = document.querySelector("#chatInput").value.trim();
     if (chat.length < 256 && chat) {
       rtdb.push(chatRef, {'author':username,'message':chat,'avatar':avatar});
