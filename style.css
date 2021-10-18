@@ -1,3 +1,12 @@
+body {
+  background: #23272A;
+}
+
+p, span, h1 {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .loggedIn {
   visibility: hidden;
 }
@@ -16,12 +25,24 @@
 }
 
 #loginBox, #chatBox, #submitBox{
-  width: 300px;
+  width: 320px;
+}
+
+#chatBox {
+  background: #2C2F33;
+}
+
+.pfp {
+  position: relative;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
 .message {
   vertical-align: text-top;
-  inline-size: 240px;
+  inline-size: 250px;
   overflow-wrap: break-word;
   word-break: break-all;
 }
@@ -35,16 +56,45 @@
 }
 
 #entireThing {
-  height: auto;
+  width: 80%;
 }
 
 #chatBox{
-  height: 500px;
+  height: 430px;
   overflow: auto;
 }
 
 #submitBox{
-   position: fixed;
-   top: 620px;
+   margin-top: 10px;
    height: 60px;
+   text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2C2F33; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+input {
+  font: inherit;
+  padding: 0.2em 0.5em;
+}
+
+#chatInput {
+  width: 65%;
+}
+
+#chatSubmit {
+  width: 25%;
 }
