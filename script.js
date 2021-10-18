@@ -57,10 +57,10 @@ rtdb.onValue(chatRef, ss=>{
   let backload = 0
   if (initialize) {
     let histLen = Object.keys(obj).length;
-    if (histLen < 30) {
+    if (histLen < 50) {
       backload = histLen - 1;
     } else {
-      backload = 30;
+      backload = 50;
     }
     initialize = false;  
   }
