@@ -13,7 +13,6 @@ const firebaseConfig = {
   appId: "1:913846922731:web:55fa87198c9f05425e3dae",
   measurementId: "G-E9BL4YCX4S"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
@@ -74,13 +73,13 @@ rtdb.onValue(chatRef, ss=>{
     newMsg.setAttribute("class","message");
     newMsg.setAttribute("id",msgID);
     document.getElementById("chatBox").appendChild(newMsg);
-    document.getElementById(msgID).innerHTML += ('<div class="pfp"><img src='+pfp+' alt='+author+' style="width:32px;height:32px;"></div><div class="msgText"><p class="author">'+author+'</p><p class="message">'+msg+'</p></div>');  
+    document.getElementById(msgID).innerHTML = ('<div class="pfp"><img src='+pfp+' alt='+author+' style="width:32px;height:32px;"></div><div class="msgText"><p class="author">'+author+'</p><p class="message">'+msg+'</p></div>');  
   }
   scrollToBottom(document.getElementById('chatBox'));
 });
 
 const chatHandler = function(){
-  if (username != "" && avatar != "") { //something broke when I transferred this code over from my sandbox but this ended up fixing it??? damn
+  if (username && avatar) { 
     let chat = document.querySelector("#chatInput").value.trim();
     if (chat.length < 256 && chat) {
       rtdb.push(chatRef, {'author':username,'message':chat,'avatar':avatar});
