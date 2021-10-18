@@ -13,16 +13,17 @@ const firebaseConfig = {
   appId: "1:913846922731:web:55fa87198c9f05425e3dae",
   measurementId: "G-E9BL4YCX4S"
 };
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
 let username = "";
 let avatar = "";
-let email = "";
+//let email = "";
 let initialize = true;
 let db = rtdb.getDatabase(app);
 let chatRef = rtdb.ref(db, "/chats");
-let userRef = rtdb.ref(db, "/users");
+//let userRef = rtdb.ref(db, "/users");
 const auth = getAuth();
 
 getRedirectResult(auth)
@@ -34,7 +35,7 @@ getRedirectResult(auth)
     const user = result.user;
     username = user["displayName"];
     avatar = user["photoURL"];
-    email = user["email"];
+    //email = user["email"];
     document.getElementById("signIn").style.visibility = 'hidden';
     for (let elt of document.getElementsByClassName("loggedIn")) elt.style.visibility = 'visible';
     document.getElementById('loginText').innerHTML += username;
@@ -79,7 +80,7 @@ rtdb.onValue(chatRef, ss=>{
 });
 
 const chatHandler = function(){
-  if (username && avatar) {
+  if (username && avatar) { 
     let chat = document.querySelector("#chatInput").value.trim();
     if (chat.length < 256 && chat) {
       rtdb.push(chatRef, {'author':username,'message':chat,'avatar':avatar});
