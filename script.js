@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
 let username = "";
 let avatar = "";
-//let email = "";
+let email = "";
 let initialize = true;
 let db = rtdb.getDatabase(app);
 let chatRef = rtdb.ref(db, "/chats");
@@ -35,10 +35,10 @@ getRedirectResult(auth)
     const user = result.user;
     username = user["displayName"];
     avatar = user["photoURL"];
-    //email = user["email"];
+    email = user["email"];
     document.getElementById("signIn").style.visibility = 'hidden';
     for (let elt of document.getElementsByClassName("loggedIn")) elt.style.visibility = 'visible';
-    document.getElementById('loginText').innerHTML += username;
+    document.getElementById('loginText').innerHTML += username + ' ('+ email +')';
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
