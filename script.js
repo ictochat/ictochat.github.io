@@ -80,7 +80,7 @@ rtdb.onValue(chatRef, ss=>{
 });
 
 const chatHandler = function(){
-  if (username && avatar) { 
+  if (username != "" && avatar != "") { 
     let chat = document.querySelector("#chatInput").value.trim();
     if (chat.length < 256 && chat) {
       rtdb.push(chatRef, {'author':username,'message':chat,'avatar':avatar});
