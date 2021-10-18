@@ -79,7 +79,7 @@ rtdb.onValue(chatRef, ss=>{
 });
 
 const chatHandler = function(){
-  if (auth["currentUser"]) { //this used to scan if "username" and "avatar" had values but i changed that
+  if (username && avatar) {
     let chat = document.querySelector("#chatInput").value.trim();
     if (chat.length < 256 && chat) {
       rtdb.push(chatRef, {'author':username,'message':chat,'avatar':avatar});
