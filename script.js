@@ -80,7 +80,7 @@ rtdb.onValue(chatRef, ss=>{
 });
 
 const chatHandler = function(){
-  if (username != "" && avatar != "") { 
+  if (username != "" && avatar != "") { //something broke when I transferred this code over from my sandbox but this ended up fixing it??? damn
     let chat = document.querySelector("#chatInput").value.trim();
     if (chat.length < 256 && chat) {
       rtdb.push(chatRef, {'author':username,'message':chat,'avatar':avatar});
