@@ -62,7 +62,8 @@ rtdb.onValue(chatRef, ss=>{
     } else {
       backload = 50;
     }
-    initialize = false;  
+    initialize = false;
+    scrollToBottom(document.getElementById('chatBox'));  
   }
   for (let x = backload; x > -1; x--) {
     let msgID = Object.keys(obj).reverse()[x];
@@ -79,7 +80,6 @@ rtdb.onValue(chatRef, ss=>{
       document.getElementById(msgID).innerHTML = ('<div class="ava"><img class="pfp" src='+pfp+' alt='+author+'></div><div class="msgText"><p class="author">'+author+'</p><p class="message">'+msg+'</p></div>');
     }
   }
-  scrollToBottom(document.getElementById('chatBox'));
 });
 
 const chatHandler = function(){
@@ -87,6 +87,7 @@ const chatHandler = function(){
     let chat = document.querySelector("#chatInput").value.trim();
     if (chat.length < 256 && chat) {
       rtdb.push(chatRef, {'author':username,'message':chat,'avatar':avatar});
+      scrollToBottom(document.getElementById('chatBox'));
     } else {
       alert("Too long/short!");
     }
