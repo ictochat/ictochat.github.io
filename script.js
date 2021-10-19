@@ -62,8 +62,7 @@ rtdb.onValue(chatRef, ss=>{
     } else {
       backload = 50;
     }
-    initialize = false;
-    scrollToBottom(document.getElementById('chatBox'));  
+    initialize = false; 
   }
   for (let x = backload; x > -1; x--) {
     let msgID = Object.keys(obj).reverse()[x];
@@ -79,6 +78,9 @@ rtdb.onValue(chatRef, ss=>{
       document.getElementById("chatBox").appendChild(newMsg);
       document.getElementById(msgID).innerHTML = ('<div class="ava"><img class="pfp" src='+pfp+' alt='+author+'></div><div class="msgText"><p class="author">'+author+'</p><p class="message">'+msg+'</p></div>');
     }
+  }
+  if (backload != 0) {
+    scrollToBottom(document.getElementById('chatBox')); 
   }
 });
 
