@@ -86,7 +86,7 @@ p, span, h1 {
   background: #555; 
 }
 
-input {
+input, button {
   font: inherit;
   padding: 0.2em 0.5em;
 }
