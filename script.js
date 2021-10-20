@@ -24,7 +24,6 @@ let db = rtdb.getDatabase(app);
 let chatRef = rtdb.ref(db, "/chats");
 //let userRef = rtdb.ref(db, "/users");
 const auth = getAuth();
-console.log(auth);
 getRedirectResult(auth)
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access Google APIs.
