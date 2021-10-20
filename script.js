@@ -84,14 +84,20 @@ rtdb.onValue(chatRef, ss=>{
   }
 });
 
+const sanitizeHTML = function(str) {
+	return str.replace(/[^\w. ]/gi, function (c) {
+		return '&#' + c.charCodeAt(0) + ';';
+	});
+};
+
 const chatHandler = function(){
   if (username && avatar) { 
-    let chat = document.querySelector("#chatInput").value.trim();
+    let chat = sanitizeHTML(document.querySelector("#chatInput").value.trim());
     if (chat.length < 256 && chat) {
       rtdb.push(chatRef, {'author':username,'message':chat,'avatar':avatar});
       scrollToBottom(document.getElementById('chatBox'));
     } else {
-      alert("Too long/short!");
+      alert("Too long/short or HTML detected!");
     }
     document.querySelector("#chatInput").value = "";
   } else {
